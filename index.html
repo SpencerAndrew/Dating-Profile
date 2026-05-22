@@ -3,45 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spencer Andrew | Dating Profile</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-slate-50 text-slate-900 font-sans">
+    <title>My Dating Profile</title>
     
-    <header class="bg-blue-600 text-white py-12 px-4 text-center">
-        <h1 class="text-5xl font-bold mb-2">Spencer Andrew</h1>
-        <p class="text-xl font-light">Freelance Photographer & Broadcast Journalist</p>
-        <p class="text-md mt-2 font-medium opacity-80">📍 Wheaton, IL</p>
-    </header>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ff4b72',
+                        secondary: '#ff7b54',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        heartbeat: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.3)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.3)' },
+                            '70%': { transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for the glass effect and smooth scrolling */
+        body {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            background-attachment: fixed;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex justify-center items-center p-4 sm:p-8">
 
-    <main class="max-w-3xl mx-auto py-10 px-6">
+    <main id="profile-card" class="glass-card w-full max-w-md rounded-[2.5rem] shadow-2xl overflow-hidden relative transition-all duration-500">
         
-        <section class="bg-white rounded-xl shadow-md p-8 mb-8">
-            <h2 class="text-2xl font-bold mb-4 border-b pb-2">👋 About Me</h2>
-            <p class="text-lg leading-relaxed text-gray-700">
-                I'm a driven, creative professional who thrives on capturing the perfect shot and breaking the latest news. A WIU alum with a love for media, I'm currently building my digital news platform, <i>The World Today</i>. I'm always chasing the next great story or the next great tech innovation.
-            </p>
-        </section>
+        <!-- Header Image & Avatar -->
+        <div class="relative h-64 sm:h-72 w-full">
+            <img src="https://images.unsplash.com/photo-1506744626753-eba7bc3623ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cover Photo" class="w-full h-full object-cover rounded-t-[2.5rem]" onerror="this.src='https://placehold.co/800x400/fda085/white?text=Beautiful+Landscape'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            
+            <!-- Location Badge -->
+            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg border border-white/30">
+                <i class="fa-solid fa-location-dot"></i> Wheaton, IL
+            </div>
 
-        <section class="bg-white rounded-xl shadow-md p-8 mb-8">
-            <h2 class="text-2xl font-bold mb-4 border-b pb-2">🌪️ Fast Facts</h2>
-            <ul class="space-y-3 text-lg text-gray-700">
-                <li><strong>The Ride:</strong> 2011 Ford Focus SE</li>
-                <li><strong>Hobbies:</strong> Storm chasing, simulation gaming, Apple tech</li>
-                <li><strong>Sports:</strong> Dodgers Baseball & Iowa State Cyclones</li>
-                <li><strong>Tech Stack:</strong> React, Tailwind CSS, AI Workflows</li>
-            </ul>
-        </section>
+            <!-- Profile Avatar -->
+            <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+                <div class="w-32 h-32 rounded-full border-4 border-white shadow-xl bg-white overflow-hidden relative">
+                    <!-- Using DiceBear for a fun placeholder avatar -->
+                    <img src="https://api.dicebear.com/9.x/micah/svg?seed=AwesomeUser&backgroundColor=ffb8b8" alt="Profile Avatar" class="w-full h-full object-cover z-10 relative">
+                </div>
+                <!-- Online Status Dot -->
+                <div class="absolute bottom-2 right-2 w-5 h-5 bg-green-400 border-2 border-white rounded-full z-20"></div>
+            </div>
+        </div>
 
-        <section class="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl shadow-sm p-8">
-            <h2 class="text-2xl font-bold mb-4 text-blue-800">🍔 Let's Go Out</h2>
-            <p class="text-lg leading-relaxed text-gray-800">
-                Let's grab a casual dinner at Culver's or Buffalo Wild Wings, talk about everything from meteorology to modern web dev, and see if we click.
-            </p>
-        </section>
+        <div class="pt-20 pb-6 px-6 sm:px-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900 flex justify-center items-center gap-2">
+                Your Name, 28 <i class="fa-solid fa-circle-check text-blue-500 text-lg" title="Verified"></i>
+            </h1>
+            <p class="text-gray-500 font-medium mt-1">Professional Overthinker & Coffee Enthusiast</p>
+            
+            <!-- Quick Stats -->
+            <div class="flex flex-wrap justify-center gap-2 mt-5">
+                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-ruler-vertical"></i> 5'10"
+                </span>
+                <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-star"></i> Gemini
+                </span>
+                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-wine-glass"></i> Socially
+                </span>
+                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-dog"></i> Dog Parent
+                </span>
+            </div>
+        </div>
 
+        <div class="px-6 sm:px-8 pb-8 space-y-6">
+            
+            <!-- About Me Section -->
+            <div class="text-left">
+                <h2 class="text-xl font-bold text-gray-800 mb-2 border-b-2 border-primary/20 pb-1 inline-block">About Me</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mt-2">
+                    Looking for someone to survive the wild Illinois winters with. I spend my weekends trying to find the best pizza in town, getting mildly competitive at board games, and quoting movies you've probably never seen. 
+                    <br><br>
+                    <strong>Green flags:</strong> You like spontaneous road trips, you have a solid Spotify playlist, and you know how to hold a conversation.
+                </p>
+            </div>
+
+            <!-- Two Truths and a Lie -->
+            <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100 shadow-sm text-left">
+                <h3 class="font-bold text-secondary text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-mask"></i> Two Truths and a Lie</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I've accidentally bumped into a celebrity at the grocery store.</li>
+                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I can cook a mean Beef Wellington.</li>
+                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I've never actually seen an episode of The Office.</li>
+                </ul>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="text-left">
+                <h2 class="text-xl font-bold text-gray-800 mb-3 border-b-2 border-primary/20 pb-1 inline-block">Life in Photos</h2>
+                <div class="grid grid-cols-2 gap-3 mt-2">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 1" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/ffb8b8/white?text=Hobby'">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 2" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/b8e0ff/white?text=Coffee'">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-center items-center gap-6 pt-4 pb-2">
+                <button onclick="handleAction('pass')" class="w-16 h-16 rounded-full bg-white shadow-lg flex justify-center items-center text-red-500 text-2xl hover:bg-red-50 hover:scale-110 transition-all duration-300">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button onclick="handleAction('superlike')" class="w-12 h-12 rounded-full bg-white shadow-lg flex justify-center items-center text-blue-400 text-xl hover:bg-blue-50 hover:scale-110 transition-all duration-300">
+                    <i class="fa-solid fa-star"></i>
+                </button>
+                <button onclick="handleAction('like')" class="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/40 flex justify-center items-center text-white text-2xl hover:scale-110 transition-all duration-300 animate-pulse hover:animate-none">
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+            </div>
+        </div>
     </main>
 
+    <!-- Match Modal (Hidden by default) -->
+    <div id="matchModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex-col justify-center items-center p-4 opacity-0 transition-opacity duration-500">
+        <div class="text-center w-full max-w-sm">
+            <h2 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400 font-serif italic mb-8 transform -rotate-6 animate-heartbeat">
+                It's a Match!
+            </h2>
+            
+            <div class="flex justify-center items-center gap-4 mb-8">
+                <img src="https://api.dicebear.com/9.x/micah/svg?seed=AwesomeUser&backgroundColor=ffb8b8" class="w-24 h-24 rounded-full border-4 border-white shadow-2xl object-cover" alt="You">
+                <i class="fa-solid fa-heart text-primary text-3xl animate-float"></i>
+                <img src="https://api.dicebear.com/9.x/micah/svg?seed=Visitor&backgroundColor=b8e0ff" class="w-24 h-24 rounded-full border-4 border-white shadow-2xl object-cover" alt="Them">
+            </div>
+
+            <p class="text-white text-lg mb-8">You and [Your Name] have liked each other.</p>
+            
+            <div class="space-y-4 w-full">
+                <button onclick="closeModal()" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    Send a Message
+                </button>
+                <button onclick="closeModal()" class="w-full bg-transparent border-2 border-white/30 text-white font-bold py-4 rounded-full hover:bg-white/10 transition-all">
+                    Keep Swiping
+                </button>
+            </div>
+        </div>
+        
+        <!-- Confetti Canvas -->
+        <canvas id="confetti" class="fixed inset-0 pointer-events-none z-[-1]"></canvas>
+    </div>
+
+    <script>
+        // Handle swipe buttons
+        function handleAction(type) {
+            const card = document.getElementById('profile-card');
+            
+            if (type === 'pass') {
+                // Swipe left animation
+                card.style.transform = 'translateX(-150%) rotate(-20deg)';
+                card.style.opacity = '0';
+                
+                setTimeout(() => resetCard(card), 600);
+            } 
+            else if (type === 'like' || type === 'superlike') {
+                // Swipe right animation (optional addition for visual flair)
+                if (type === 'superlike') {
+                    card.style.transform = 'translateY(-150%)';
+                } else {
+                    card.style.transform = 'translateX(150%) rotate(20deg)';
+                }
+                card.style.opacity = '0';
+
+                // Show Match Modal shortly after
+                setTimeout(() => {
+                    const modal = document.getElementById('matchModal');
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    // Trigger reflow
+                    void modal.offsetWidth;
+                    modal.classList.remove('opacity-0');
+                    modal.classList.add('opacity-100');
+                    
+                    // Start confetti if like
+                    if(type === 'like' || type === 'superlike') startConfetti();
+                }, 300);
+            }
+        }
+
+        // Reset card after action
+        function resetCard(card) {
+            card.style.transition = 'none';
+            card.style.transform = 'translateX(0) rotate(0) translateY(0)';
+            card.style.opacity = '1';
+            
+            // Add a little pop-in animation
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s ease-out';
+                card.animate([
+                    { transform: 'scale(0.8)', opacity: 0 },
+                    { transform: 'scale(1)', opacity: 1 }
+                ], { duration: 300, easing: 'ease-out' });
+            }, 50);
+        }
+
+        // Close Modal and bring card back
+        function closeModal() {
+            const modal = document.getElementById('matchModal');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                stopConfetti();
+                // Bring back the card for preview purposes
+                resetCard(document.getElementById('profile-card'));
+            }, 500);
+        }
+
+        // --- Simple Confetti Implementation ---
+        let confettiLoop;
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function createParticles() {
+            const colors = ['#ff4b72', '#ff7b54', '#f6d365', '#ffffff', '#a855f7'];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    angle: Math.random() * 360,
+                    spin: Math.random() * 0.2 - 0.1
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                ctx.restore();
+
+                p.y += p.speed;
+                p.angle += p.spin;
+
+                if (p.y > canvas.height) {
+                    particles.splice(index, 1);
+                }
+            });
+
+            if (particles.length > 0) {
+                confettiLoop = requestAnimationFrame(drawParticles);
+            }
+        }
+
+        function startConfetti() {
+            particles = [];
+            createParticles();
+            cancelAnimationFrame(confettiLoop);
+            drawParticles();
+        }
+
+        function stopConfetti() {
+            particles = [];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            cancelAnimationFrame(confettiLoop);
+        }
+    </script>
 </body>
 </html>
