@@ -68,13 +68,19 @@
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen flex justify-center items-center p-4 sm:p-8">
+<body class="text-gray-800 antialiased min-h-screen flex flex-col justify-center items-center p-4 sm:p-8">
+
+    <!-- Audience Toggle Tabs -->
+    <div class="mb-6 flex bg-white/30 backdrop-blur-md rounded-full p-1 shadow-lg border border-white/40 z-10 relative">
+        <button id="tab-women" onclick="switchTab('women')" class="px-6 py-2 rounded-full bg-white text-primary font-bold shadow transition-all duration-300">Women</button>
+        <button id="tab-men" onclick="switchTab('men')" class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-white/50 transition-all duration-300">Men</button>
+    </div>
 
     <main id="profile-card" class="glass-card w-full max-w-md rounded-[2.5rem] shadow-2xl overflow-hidden relative transition-all duration-500">
         
         <!-- Header Image & Avatar -->
         <div class="relative h-64 sm:h-72 w-full">
-            <img src="https://images.unsplash.com/photo-1506744626753-eba7bc3623ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cover Photo" class="w-full h-full object-cover rounded-t-[2.5rem]" onerror="this.src='https://placehold.co/800x400/fda085/white?text=Beautiful+Landscape'">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cover Photo - Summer Mountain" class="w-full h-full object-cover rounded-t-[2.5rem]" onerror="this.src='https://placehold.co/800x400/fda085/white?text=Summer+Mountain'">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             
             <!-- Location Badge -->
@@ -93,60 +99,151 @@
             </div>
         </div>
 
-        <div class="pt-20 pb-6 px-6 sm:px-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-900 flex justify-center items-center gap-2">
-                Your Name, 28 <i class="fa-solid fa-circle-check text-blue-500 text-lg" title="Verified"></i>
-            </h1>
-            <p class="text-gray-500 font-medium mt-1">Professional Overthinker & Coffee Enthusiast</p>
-            
-            <!-- Quick Stats -->
-            <div class="flex flex-wrap justify-center gap-2 mt-5">
-                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <i class="fa-solid fa-ruler-vertical"></i> 5'10"
-                </span>
-                <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <i class="fa-solid fa-star"></i> Gemini
-                </span>
-                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <i class="fa-solid fa-wine-glass"></i> Socially
-                </span>
-                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <i class="fa-solid fa-dog"></i> Dog Parent
-                </span>
-            </div>
-        </div>
-
-        <div class="px-6 sm:px-8 pb-8 space-y-6">
-            
-            <!-- About Me Section -->
-            <div class="text-left">
-                <h2 class="text-xl font-bold text-gray-800 mb-2 border-b-2 border-primary/20 pb-1 inline-block">About Me</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mt-2">
-                    Looking for someone to survive the wild Illinois winters with. I spend my weekends trying to find the best pizza in town, getting mildly competitive at board games, and quoting movies you've probably never seen. 
-                    <br><br>
-                    <strong>Green flags:</strong> You like spontaneous road trips, you have a solid Spotify playlist, and you know how to hold a conversation.
-                </p>
-            </div>
-
-            <!-- Two Truths and a Lie -->
-            <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100 shadow-sm text-left">
-                <h3 class="font-bold text-secondary text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-mask"></i> Two Truths and a Lie</h3>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I've accidentally bumped into a celebrity at the grocery store.</li>
-                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I can cook a mean Beef Wellington.</li>
-                    <li class="flex gap-2 items-start"><i class="fa-regular fa-circle-dot text-secondary mt-1"></i> I've never actually seen an episode of The Office.</li>
-                </ul>
-            </div>
-
-            <!-- Photo Gallery -->
-            <div class="text-left">
-                <h2 class="text-xl font-bold text-gray-800 mb-3 border-b-2 border-primary/20 pb-1 inline-block">Life in Photos</h2>
-                <div class="grid grid-cols-2 gap-3 mt-2">
-                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 1" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/ffb8b8/white?text=Hobby'">
-                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 2" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/b8e0ff/white?text=Coffee'">
+        <div id="view-women" class="transition-opacity duration-300">
+            <div class="pt-20 pb-6 px-6 sm:px-8 text-center">
+                <h1 class="text-3xl font-bold text-gray-900 flex justify-center items-center gap-2">
+                    Spencer Andrew, 25 <i class="fa-solid fa-circle-check text-blue-500 text-lg" title="Verified"></i>
+                </h1>
+                <p class="text-gray-500 font-medium mt-1 text-sm">Journalist & Storyteller @ The World Today / Wheaton Park District</p>
+                
+                <!-- Quick Stats -->
+                <div class="flex flex-wrap justify-center gap-2 mt-5">
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-graduation-cap"></i> Western Illinois Univ.
+                    </span>
+                    <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-cloud-bolt"></i> Weather Nerd
+                    </span>
+                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-camera"></i> Photographer
+                    </span>
+                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 text-lg tracking-widest">
+                        🇮🇪🇬🇧🏴󠁧󠁢󠁳󠁣󠁴󠁿🇩🇪🇳🇱
+                    </span>
                 </div>
             </div>
 
+            <div class="px-6 sm:px-8 pb-4 space-y-6">
+                
+                <!-- About Me Section -->
+                <div class="text-left">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2 border-b-2 border-primary/20 pb-1 inline-block">The Bio</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-2">
+                        Journalist by day, aspiring social media strategist by night. I’m a pro at digging up the facts, but I’m still looking for the perfect co-lead for my own story.
+                        <br><br>
+                        I’m a big fan of digital storytelling, which basically means I know how to make us look really good on Instagram. When I’m not chasing a deadline or crafting content, you can find me geeking out over severe weather patterns (yes, I took two classes on it) or analyzing films like they’re news reports.
+                        <br><br>
+                        <strong>Swipe right if:</strong> You appreciate a well-edited photo, you don’t mind a guy who checks the radar before a picnic, and you’re ready to be the 'breaking news' in my life.
+                    </p>
+                </div>
+
+                <!-- Profile Q&A -->
+                <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100 shadow-sm text-left">
+                    <h3 class="font-bold text-primary text-sm uppercase tracking-wider mb-4"><i class="fa-solid fa-clipboard-question"></i> The Details</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">My real-life superpower:</span>
+                            Predicting the weather better than your app. (I literally studied "Severe & Unusual Weather" and "Weather Analysis" in college. Try me.)
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">A fun fact I brag about:</span>
+                            I’ve studied everything from The History of Terrorism to Film as Literature. I’m great at trivia night, but I promise to keep the dinner conversation lighter than my criminology textbooks.
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">Dream Job:</span>
+                            Managing a massive social media brand where I can use my "Crisis Communication" skills to save the day (or just post really good memes).
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">I'm looking for:</span>
+                            Someone who gets that "Digital Media Journalism" is a lifestyle, not just a major. Also, someone who is willing to be the subject of my "Photography I & II" skills.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="text-left">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3 border-b-2 border-primary/20 pb-1 inline-block">Life in Photos</h2>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 1" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/ffb8b8/white?text=Hobby'">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 2" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/b8e0ff/white?text=Coffee'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-men" class="hidden transition-opacity duration-300 opacity-0">
+            <div class="pt-20 pb-6 px-6 sm:px-8 text-center">
+                <h1 class="text-3xl font-bold text-gray-900 flex justify-center items-center gap-2">
+                    Spencer Andrew, 25 <i class="fa-solid fa-circle-check text-blue-500 text-lg" title="Verified"></i>
+                </h1>
+                <p class="text-gray-500 font-medium mt-1 text-sm">Journalist & Storyteller @ The World Today / Wheaton Park District</p>
+                
+                <!-- Quick Stats -->
+                <div class="flex flex-wrap justify-center gap-2 mt-5">
+                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-graduation-cap"></i> Western Illinois Univ.
+                    </span>
+                    <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-cloud-bolt"></i> Weather Nerd
+                    </span>
+                    <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-camera"></i> Photographer
+                    </span>
+                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 text-lg tracking-widest">
+                        🇮🇪🇬🇧🏴󠁧󠁢󠁳󠁣󠁴󠁿🇩🇪🇳🇱
+                    </span>
+                </div>
+            </div>
+
+            <div class="px-6 sm:px-8 pb-4 space-y-6">
+                
+                <!-- About Me Section -->
+                <div class="text-left">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2 border-b-2 border-secondary/20 pb-1 inline-block">The Bio</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-2">
+                        Journalist by day, aspiring social media strategist by night. I’m a pro at digging up the facts, but I’m still looking for the perfect co-lead for my own story.
+                        <br><br>
+                        I’m a big fan of digital storytelling, which basically means I know how to make us look really good on Instagram. When I’m not chasing a deadline or crafting content, you can find me geeking out over severe weather patterns (yes, I took two classes on it) or analyzing films like they’re news reports.
+                        <br><br>
+                        <strong>Swipe right if:</strong> You appreciate a well-edited photo, you don’t mind a guy who checks the radar before a picnic, and you’re ready to be the 'breaking news' in my life.
+                    </p>
+                </div>
+
+                <!-- Profile Q&A -->
+                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 shadow-sm text-left">
+                    <h3 class="font-bold text-blue-500 text-sm uppercase tracking-wider mb-4"><i class="fa-solid fa-clipboard-question"></i> The Details</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">My real-life superpower:</span>
+                            Predicting the weather better than your app. (I literally studied "Severe & Unusual Weather" and "Weather Analysis" in college. Try me.)
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">A fun fact I brag about:</span>
+                            I’ve studied everything from The History of Terrorism to Film as Literature. I’m great at trivia night, but I promise to keep the dinner conversation lighter than my criminology textbooks.
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">Dream Job:</span>
+                            Managing a massive social media brand where I can use my "Crisis Communication" skills to save the day (or just post really good memes).
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900 block mb-1">I'm looking for:</span>
+                            Someone who gets that "Digital Media Journalism" is a lifestyle, not just a major. Also, someone who is willing to be the subject of my "Photography I & II" skills.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="text-left">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3 border-b-2 border-secondary/20 pb-1 inline-block">Life in Photos</h2>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 1" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/b8e0ff/white?text=Gym'">
+                        <img src="https://images.unsplash.com/photo-1563514995816-724e548d1c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hobby 2" class="rounded-xl w-full h-32 object-cover shadow-sm transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x400/ffb8b8/white?text=Project'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 sm:px-8 pb-8">
             <!-- Action Buttons -->
             <div class="flex justify-center items-center gap-6 pt-4 pb-2">
                 <button onclick="handleAction('pass')" class="w-16 h-16 rounded-full bg-white shadow-lg flex justify-center items-center text-red-500 text-2xl hover:bg-red-50 hover:scale-110 transition-all duration-300">
@@ -175,7 +272,7 @@
                 <img src="https://api.dicebear.com/9.x/micah/svg?seed=Visitor&backgroundColor=b8e0ff" class="w-24 h-24 rounded-full border-4 border-white shadow-2xl object-cover" alt="Them">
             </div>
 
-            <p class="text-white text-lg mb-8">You and [Your Name] have liked each other.</p>
+            <p class="text-white text-lg mb-8">You and Spencer Andrew have liked each other.</p>
             
             <div class="space-y-4 w-full">
                 <button onclick="closeModal()" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
@@ -192,6 +289,55 @@
     </div>
 
     <script>
+        // Handle Tab Switching
+        function switchTab(target) {
+            const btnWomen = document.getElementById('tab-women');
+            const btnMen = document.getElementById('tab-men');
+            const viewWomen = document.getElementById('view-women');
+            const viewMen = document.getElementById('view-men');
+
+            if (target === 'women') {
+                // Update buttons
+                btnWomen.classList.replace('text-gray-700', 'text-primary');
+                btnWomen.classList.add('bg-white', 'shadow');
+                btnWomen.classList.remove('hover:bg-white/50');
+                
+                btnMen.classList.replace('text-blue-500', 'text-gray-700');
+                btnMen.classList.remove('bg-white', 'shadow');
+                btnMen.classList.add('hover:bg-white/50');
+
+                // Crossfade views
+                viewMen.classList.add('opacity-0');
+                setTimeout(() => {
+                    viewMen.classList.add('hidden');
+                    viewWomen.classList.remove('hidden');
+                    // Force reflow
+                    void viewWomen.offsetWidth;
+                    viewWomen.classList.remove('opacity-0');
+                }, 300);
+
+            } else {
+                // Update buttons
+                btnMen.classList.replace('text-gray-700', 'text-blue-500');
+                btnMen.classList.add('bg-white', 'shadow');
+                btnMen.classList.remove('hover:bg-white/50');
+                
+                btnWomen.classList.replace('text-primary', 'text-gray-700');
+                btnWomen.classList.remove('bg-white', 'shadow');
+                btnWomen.classList.add('hover:bg-white/50');
+
+                // Crossfade views
+                viewWomen.classList.add('opacity-0');
+                setTimeout(() => {
+                    viewWomen.classList.add('hidden');
+                    viewMen.classList.remove('hidden');
+                    // Force reflow
+                    void viewMen.offsetWidth;
+                    viewMen.classList.remove('opacity-0');
+                }, 300);
+            }
+        }
+
         // Handle swipe buttons
         function handleAction(type) {
             const card = document.getElementById('profile-card');
